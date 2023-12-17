@@ -1,0 +1,50 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Quiz</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<h1>Quiz</h1>#}
+{##}
+{#<form id="quiz-form" action="{% url 'quiz:submit_q' %}" method="post">#}
+{#    {% csrf_token %}#}
+{#    {% for question in questions %}#}
+{#        <p>{{ question.question_text }}</p>#}
+{#        {% for choice in question.choice_set.all %}#}
+{#            <label>#}
+{#                <input type="radio" name="{{ question.id }}" value="{{ choice.id }}">#}
+{#            </label> {{ choice.choice_text }}<br>#}
+{#        {% endfor %}#}
+{#        <br>#}
+{#    {% endfor %}#}
+{#    <button type="submit">Submit</button>#}
+{#</form>#}
+{##}
+{#<script>#}
+{#    document.getElementById('quiz-form').addEventListener('submit', function (e) {#}
+{#        e.preventDefault();#}
+{#        const formData = new FormData(e.target);#}
+{#        const data = {};#}
+{#        formData.forEach((value, key) => {#}
+{#            data[key] = value;#}
+{#        });#}
+{#        fetch('{% url "quiz:submit_q" %}', {#}
+{#            method: 'POST',#}
+{#            headers: {#}
+{#                'Content-Type': 'application/json',#}
+{#                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,#}
+{#            },#}
+{#            body: JSON.stringify(data),#}
+{#        })#}
+{#        .then(response => response.json())#}
+{#        .then(result => {#}
+{#            alert('Your score: ' + result.score);#}
+{#        });#}
+{#    });#}
+{#</script>#}
+{##}
+{#</body>#}
+{#</html>#}
